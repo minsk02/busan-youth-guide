@@ -51,7 +51,7 @@ OPENAI_MODEL=gpt-4o-mini
 
 [부산광역시 청년지원프로그램 정보 API](https://www.data.go.kr/data/15163604/openapi.do)를 사용합니다. 2026-10-26 수집본은 원본 1,000건, 완전 중복 제거 후 997건입니다. 이 중 96건은 수집된 상태와 날짜가 현재 신청기간에 해당합니다. 실제 접수 여부는 홈페이지 확인이 필요합니다.
 
-원천 모집 상태 필터가 검증 요청에서 적용되지 않아 서버에서 다시 판정합니다. 홈페이지 URL에도 누락·부적합 값이 있습니다. 등록일, 실제 수집 시점, 접수 마감 시각을 구분해서 안내합니다. 자세한 내용은 [데이터 검증 기록](docs/data-api-review.md)에 있습니다.
+원천 모집 상태 필터가 검증 요청에서 적용되지 않아 서버에서 다시 판정합니다. 홈페이지 URL에도 누락·부적합 값이 있습니다. 등록일, 실제 수집 시점, 접수 마감 시각을 구분해서 안내합니다.
 
 키·DB·수집 원본은 Git에 올리지 않습니다. 원문 질문은 DB에 저장하지 않으며 AI 요청 시 OpenAI에 전달됩니다. Responses API의 `store=False`를 사용하며, 제공자의 보관 정책은 별도로 적용됩니다.
 
@@ -62,7 +62,7 @@ OPENAI_MODEL=gpt-4o-mini
 .venv/Scripts/python.exe scripts/smoke_test.py
 ```
 
-첫 명령은 가상 자료와 대체 응답을 사용하는 오프라인 테스트입니다. 두 번째는 실제 DB·OpenAI API를 사용하므로 키 설정과 소량의 API 비용이 필요합니다. 결과는 [시스템 점검 기록](docs/test-results.md)에 정리했습니다.
+첫 명령은 가상 자료와 대체 응답을 사용하는 오프라인 테스트입니다. 두 번째는 실제 DB·OpenAI API를 사용하므로 키 설정과 소량의 API 비용이 필요합니다. 실행 결과는 data/reports에 저장됩니다.
 
 ## 구조
 
@@ -71,19 +71,9 @@ backend/       설정, SQLite, 데이터 수집, 검색·추천·비교, LLM, HT
 frontend/      HTML, CSS, JavaScript (별도 전달)
 scripts/       데이터 검증과 실제 연동 점검
 tests/         오프라인 테스트
-docs/          계획서, SRS, SDD, 협업·발표 자료
 data/          로컬 DB·원본, 공유용 집계 보고서
 ```
 
-## 문서
+## 협업과 과제 제출
 
-- [프로젝트 계획서](docs/project-plan.md)
-- [요구사항명세서](docs/requirements.md)
-- [유스케이스](docs/use-cases.md)
-- [설계서 1~3장](docs/architecture.md)
-- [API와 데이터 구조](docs/api.md)
-- [테스트 계획](docs/test-plan.md) · [실행 결과](docs/test-results.md)
-- [팀 작업 안내](docs/team-tasks.md) · [친구 파일 전달 방법](docs/handoff.md)
-- [Git 작업 규칙](CONTRIBUTING.md)
-
-제출용 DOCX는 교수님 양식에 맞춰 작성하며 팀원 실명·학번·최종 검토 정보는 팀에서 확인해야 합니다. 중간 제출 파일명은 `SoftwareEngineering_Midterm_Class1_Team10.zip`입니다.
+[Git 작업 규칙](CONTRIBUTING.md)을 따릅니다. 계획서·요구사항분석서·설계서 DOCX는 로컬에서 관리하고 LMS에 별도 제출합니다. docs와 submission 폴더는 Git 추적에서 제외합니다.

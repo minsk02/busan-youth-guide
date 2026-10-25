@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "handoff"
 FRIEND_FILES = (
     "frontend/index.html", "frontend/static/style.css",
-    "frontend/static/app.js", "docs/ui-guide.md",
+    "frontend/static/app.js",
 )
 
 
@@ -24,7 +24,7 @@ def main():
             raise SystemExit("화면 파일이 없어 묶음을 만들지 않았습니다.")
     write_zip(TARGET / "frontend-files.zip", FRIEND_FILES)
     files = {"app.py", "manage.py", "requirements.txt", ".env.example", ".gitignore", "README.md", "CONTRIBUTING.md"}
-    for folder in ("backend", "frontend", "scripts", "tests", "docs", ".github", "data/reports"):
+    for folder in ("backend", "frontend", "scripts", "tests", ".github", "data/reports"):
         files.update(str(path.relative_to(ROOT)).replace("\\", "/") for path in (ROOT / folder).rglob("*") if path.is_file() and "__pycache__" not in path.parts)
     write_zip(TARGET / "busan-youth-guide-source.zip", files)
     print("Created handoff/frontend-files.zip and handoff/busan-youth-guide-source.zip")

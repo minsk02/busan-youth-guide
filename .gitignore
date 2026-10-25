@@ -29,6 +29,10 @@ data/*.db-*
 handoff/
 artifacts/
 
+# Local coursework documents and submission files
+/docs/
+/submission/
+
 # Temporary and OS files
 ~$*
 *.tmp
