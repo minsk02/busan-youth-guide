@@ -1,0 +1,149 @@
+{
+  "checked_at_kst": "2026-10-26T00:44:13+09:00",
+  "model": "gpt-4o-mini",
+  "cases": [
+    {
+      "query": "이번 달 신청할 수 있는 교육 프로그램 찾아줘",
+      "expected": {
+        "category": "교육분야",
+        "apply_from": "2026-10-01",
+        "apply_until": "2026-10-31",
+        "only_open": true
+      },
+      "response": {
+        "ai_used": true,
+        "criteria": {
+          "apply_from": "2026-10-01",
+          "apply_until": "2026-10-31",
+          "category": "교육분야",
+          "keywords": [],
+          "only_open": true,
+          "target_keyword": null
+        },
+        "notice": "해석한 조건을 확인한 뒤 검색해주세요. 지원하지 않는 조건은 자동으로 적용하지 않았습니다.",
+        "unsupported_conditions": [],
+        "usage": {
+          "input_tokens": 569,
+          "output_tokens": 45
+        }
+      },
+      "passed": true,
+      "elapsed_seconds": 2.47
+    },
+    {
+      "query": "취업이나 면접 준비에 도움이 되는 프로그램 찾아줘",
+      "expected": {
+        "category": "일자리분야",
+        "only_open": true
+      },
+      "response": {
+        "ai_used": true,
+        "criteria": {
+          "apply_from": null,
+          "apply_until": null,
+          "category": "일자리분야",
+          "keywords": [
+            "취업",
+            "면접",
+            "준비"
+          ],
+          "only_open": true,
+          "target_keyword": null
+        },
+        "notice": "해석한 조건을 확인한 뒤 검색해주세요. 지원하지 않는 조건은 자동으로 적용하지 않았습니다.",
+        "unsupported_conditions": [],
+        "usage": {
+          "input_tokens": 571,
+          "output_tokens": 45
+        }
+      },
+      "passed": true,
+      "elapsed_seconds": 1.39
+    },
+    {
+      "query": "부산진구에서 무료로 들을 수 있는 교육을 찾아줘",
+      "expected": {
+        "category": "교육분야",
+        "only_open": true
+      },
+      "response": {
+        "ai_used": true,
+        "criteria": {
+          "apply_from": null,
+          "apply_until": null,
+          "category": "교육분야",
+          "keywords": [
+            "무료",
+            "부산진구",
+            "교육"
+          ],
+          "only_open": true,
+          "target_keyword": null
+        },
+        "notice": "해석한 조건을 확인한 뒤 검색해주세요. 지원하지 않는 조건은 자동으로 적용하지 않았습니다.",
+        "unsupported_conditions": [],
+        "usage": {
+          "input_tokens": 574,
+          "output_tokens": 44
+        }
+      },
+      "passed": false,
+      "elapsed_seconds": 1.39
+    },
+    {
+      "query": "지난 9월 문화 프로그램을 마감된 것도 포함해서 찾아줘",
+      "expected": {
+        "category": "복지·문화분야",
+        "apply_from": "2026-09-01",
+        "apply_until": "2026-09-30",
+        "only_open": false
+      },
+      "response": {
+        "ai_used": true,
+        "criteria": {
+          "apply_from": "2026-09-01",
+          "apply_until": "2026-09-30",
+          "category": "복지·문화분야",
+          "keywords": [
+            "문화",
+            "프로그램",
+            "참여"
+          ],
+          "only_open": false,
+          "target_keyword": null
+        },
+        "notice": "해석한 조건을 확인한 뒤 검색해주세요. 지원하지 않는 조건은 자동으로 적용하지 않았습니다.",
+        "unsupported_conditions": [],
+        "usage": {
+          "input_tokens": 574,
+          "output_tokens": 56
+        }
+      },
+      "passed": true,
+      "elapsed_seconds": 1.49
+    }
+  ],
+  "checks": {
+    "search": true,
+    "recommendation": true,
+    "comparison": true,
+    "detail": true,
+    "zero_results": true
+  },
+  "data_status": {
+    "ai_configured": true,
+    "as_of": "2026-10-26",
+    "categories": [
+      "교육분야",
+      "참여·권리분야",
+      "복지·문화분야",
+      "일자리분야",
+      "주거분야"
+    ],
+    "fetched_at": "2026-10-26T00:39:40+09:00",
+    "last_sync_status": "success",
+    "open_count": 96,
+    "total": 997
+  },
+  "passed": false
+}

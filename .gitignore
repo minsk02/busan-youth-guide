@@ -1,0 +1,39 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local tools and dependencies
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+dist/
+build/
+.next/
+coverage/
+.idea/
+.vscode/
+
+# Local logs and data; review and redact before sharing samples
+*.log
+data/raw/
+data/private/
+uploads/
+data/*.db
+data/*.db-*
+handoff/
+artifacts/
+
+# Temporary and OS files
+~$*
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Local submission archives
+SoftwareEngineering_Midterm_Class*_Team*.zip
