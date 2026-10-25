@@ -24,6 +24,10 @@ coverage/
 data/raw/
 data/private/
 uploads/
+data/*.db
+data/*.db-*
+handoff/
+artifacts/
 
 # Temporary and OS files
 ~$*
