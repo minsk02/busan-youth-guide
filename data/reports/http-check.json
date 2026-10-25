@@ -1,0 +1,33 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 6894
+  },
+  {
+    "path": "/static/app.js",
+    "status": 200,
+    "content_type": "text/javascript; charset=utf-8",
+    "bytes": 12754
+  },
+  {
+    "path": "/static/style.css",
+    "status": 200,
+    "content_type": "text/css; charset=utf-8",
+    "bytes": 11381
+  },
+  {
+    "path": "/api/status",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 251
+  },
+  {
+    "path": "/api/search",
+    "status": 200,
+    "total": 96,
+    "items": 12,
+    "reason_present": true
+  }
+]

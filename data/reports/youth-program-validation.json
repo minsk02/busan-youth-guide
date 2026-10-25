@@ -1,0 +1,143 @@
+{
+  "checked_at_kst": "2026-10-26T00:07:20.345466+09:00",
+  "as_of": "2026-10-26",
+  "endpoint": "https://apis.data.go.kr/6260000/YouthSupProgService/getYouthSupProg",
+  "source": "https://www.data.go.kr/data/15163604/openapi.do",
+  "request": {
+    "pageNo": 1,
+    "numOfRows": 100,
+    "resultType": "json"
+  },
+  "http_status": 200,
+  "result_code": "00",
+  "pagination": {
+    "reported_total": 1000,
+    "reported_totals_consistent": true,
+    "pages_requested": 10,
+    "page_sizes": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "collected_count": 1000,
+    "complete": true,
+    "stop_reason": "reported_total_reached"
+  },
+  "quality": {
+    "observed_fields": [
+      "aplyBgngYmd",
+      "aplyEndYmd",
+      "bizNm",
+      "busPlcNm",
+      "frstRegistPnttm",
+      "hopgUrlAddr",
+      "inqryTlphnNo",
+      "mngtMson",
+      "paReStat",
+      "schdlBgngYmd",
+      "schdlEndYmd",
+      "trgtNm"
+    ],
+    "missing_count": {
+      "busPlcNm": 0,
+      "bizNm": 0,
+      "trgtNm": 0,
+      "aplyBgngYmd": 0,
+      "aplyEndYmd": 0,
+      "schdlBgngYmd": 0,
+      "schdlEndYmd": 0,
+      "paReStat": 0,
+      "mngtMson": 0,
+      "inqryTlphnNo": 137,
+      "hopgUrlAddr": 175,
+      "frstRegistPnttm": 0
+    },
+    "invalid_date_count": {
+      "aplyBgngYmd": 0,
+      "aplyEndYmd": 0,
+      "schdlBgngYmd": 0,
+      "schdlEndYmd": 0
+    },
+    "date_ranges": {
+      "aplyBgngYmd": {
+        "min": "2026-01-01",
+        "max": "2026-10-24"
+      },
+      "aplyEndYmd": {
+        "min": "2026-03-24",
+        "max": "2026-12-31"
+      },
+      "schdlBgngYmd": {
+        "min": "2026-01-01",
+        "max": "2026-12-03"
+      },
+      "schdlEndYmd": {
+        "min": "2026-03-26",
+        "max": "2029-10-31"
+      }
+    },
+    "source_status_counts": {
+      "모집마감": 904,
+      "모집중": 96
+    },
+    "category_counts": {
+      "교육분야": 395,
+      "참여·권리분야": 290,
+      "복지·문화분야": 246,
+      "일자리분야": 61,
+      "주거분야": 8
+    },
+    "application_period_vs_as_of": {
+      "within": 96,
+      "before": 0,
+      "after": 904,
+      "unknown": 0,
+      "reversed": 0
+    },
+    "source_recruiting_but_end_date_passed": 0,
+    "exact_duplicate_record_count": 3,
+    "homepage_url_syntax": {
+      "valid": 815,
+      "invalid": 10,
+      "missing": 175,
+      "destination_checked": false
+    },
+    "registration_date_range": {
+      "min": "2026-03-19",
+      "max": "2026-10-24"
+    }
+  },
+  "filter_checks": [
+    {
+      "field": "busPlcNm",
+      "value": "교육분야",
+      "reported_total": 395,
+      "expected_count_from_full_collection": 395,
+      "sample_count": 100,
+      "sample_matches_filter": true,
+      "reported_total_matches_local_count": true
+    },
+    {
+      "field": "paReStat",
+      "value": "모집중",
+      "reported_total": 1000,
+      "expected_count_from_full_collection": 96,
+      "sample_count": 100,
+      "sample_matches_filter": false,
+      "reported_total_matches_local_count": false
+    }
+  ],
+  "limitations": [
+    "Homepage destinations and actual application availability were not checked.",
+    "Source recruitment labels are not independently verified.",
+    "Date counts use inclusive parsed date ranges, not a confirmed eligibility decision.",
+    "No unique source identifier, address, or fee field was observed unless listed in observed_fields."
+  ]
+}
