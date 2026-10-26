@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="부산 청년 프로그램을 검색하고, 관심 조건으로 추천받고, 함께 비교해보세요.">
+  <title>부산청년 프로그램 찾기</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">ㅂ</span><span>부산청년 <strong>프로그램 찾기</strong></span></a>
+    <a class="source-top" href="https://www.data.go.kr/data/15163604/openapi.do" target="_blank" rel="noopener noreferrer">데이터 출처 ↗</a>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow">부산의 다음 기회를 찾아보세요</p>
+        <h1 id="page-title">관심 있는 일부터,<br>참여할 프로그램까지.</h1>
+        <p class="lead">교육, 취업, 문화 프로그램을 한곳에서 찾아보고<br class="desktop-only"> 나에게 맞는 조건으로 비교해보세요.</p>
+        <div class="stats" aria-live="polite">
+          <div><strong id="total-count">—</strong><span>저장된 프로그램</span></div>
+          <div><strong id="open-count">—</strong><span>신청기간 내</span></div>
+          <div><strong id="as-of">—</strong><span>날짜 기준</span></div>
+        </div>
+      </div>
+      <form id="ai-form" class="question-panel">
+        <label for="question">어떤 프로그램을 찾고 있나요?</label>
+        <textarea id="question" maxlength="600" rows="3" placeholder="예: 이번 달 신청할 수 있는 교육 프로그램 찾아줘" required></textarea>
+        <div class="examples" aria-label="질문 예시">
+          <button type="button" data-example="지금 신청할 수 있는 교육 프로그램 찾아줘">교육 프로그램</button>
+          <button type="button" data-example="취업이나 면접 준비에 도움이 되는 프로그램 찾아줘">취업 준비</button>
+          <button type="button" data-example="마감된 것도 포함해서 문화 프로그램 찾아줘">문화 프로그램</button>
+        </div>
+        <div class="question-bottom"><small>AI가 질문을 검색 조건으로 정리합니다.</small><button id="ai-submit" class="button primary" type="submit">조건 읽기 <span aria-hidden="true">→</span></button></div>
+        <p id="ai-feedback" class="feedback" role="status" aria-live="polite">개인정보는 입력하지 마세요. 아래에서 직접 조건을 골라도 됩니다.</p>
+      </form>
+    </section>
+
+    <section class="workspace" aria-labelledby="browse-title">
+      <div class="section-heading"><div><p class="eyebrow">프로그램 둘러보기</p><h2 id="browse-title">원하는 조건으로 좁혀보세요</h2></div><p id="freshness" class="muted">데이터 확인 중</p></div>
+      <form id="filter-form" class="filters">
+        <div class="filter-main">
+          <div class="field"><label for="category">분야</label><select id="category"><option value="">전체 분야</option><option>교육분야</option><option>일자리분야</option><option>복지·문화분야</option><option>참여·권리분야</option><option>주거분야</option></select></div>
+          <div class="field keyword-field"><label for="keywords">관심 키워드</label><input id="keywords" maxlength="160" placeholder="예: 면접, 취업 (쉼표로 구분)"></div>
+          <div class="field"><label for="target">대상 키워드</label><input id="target" maxlength="40" placeholder="예: 대학생"></div>
+        </div>
+        <div class="filter-secondary">
+          <div class="date-fields"><span>신청기간</span><label class="sr-only" for="apply-from">신청기간 검색 시작일</label><input type="date" id="apply-from"><span>~</span><label class="sr-only" for="apply-until">신청기간 검색 종료일</label><input type="date" id="apply-until"></div>
+          <label class="check-label"><input type="checkbox" id="only-open" checked> 현재 신청기간인 항목만</label>
+          <div class="filter-actions"><button type="button" id="reset" class="button quiet">초기화</button><button type="submit" class="button dark">이 조건으로 검색</button></div>
+        </div>
+        <p id="condition-note" class="filter-note">키워드는 하나라도 포함되면 검색됩니다. 날짜는 신청기간이 겹치는 항목을 찾습니다.</p>
+      </form>
+
+      <div class="results-toolbar">
+        <div class="mode-tabs" role="group" aria-label="결과 표시 방식"><button id="search-tab" class="mode-tab active" type="button" aria-pressed="true">검색 결과</button><button id="recommend-tab" class="mode-tab" type="button" aria-pressed="false">맞춤 추천</button></div>
+        <p id="result-count" aria-live="polite">불러오는 중</p>
+      </div>
+      <p id="mode-help" class="mode-help">신청기간 내 항목을 먼저, 마감일이 가까운 순서로 보여줍니다.</p>
+      <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+      <div id="results" class="program-grid" aria-busy="false"></div>
+      <nav id="pagination" class="pagination" aria-label="검색 결과 페이지"></nav>
+    </section>
+
+    <aside class="data-note"><strong>신청 전, 원문을 한 번 더 확인해주세요.</strong><p>공공데이터의 대상·일정·모집 상태를 안내합니다. 실제 접수 상황과 참가 자격은 주관기관 홈페이지에서 확인해주세요. 비용과 장소 정보는 제공하지 않습니다.</p></aside>
+  </main>
+
+  <div id="compare-tray" class="compare-tray" hidden><div class="tray-inner"><div><strong>프로그램 비교 <span id="selected-count">0</span>/3</strong><p id="selected-names"></p></div><div class="tray-actions"><button type="button" id="clear-selection" class="button quiet">선택 해제</button><button type="button" id="open-compare" class="button primary" disabled>비교하기</button></div></div></div>
+
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><div class="dialog-top"><span>프로그램 상세</span><button type="button" class="close-dialog" aria-label="상세 닫기">닫기 ×</button></div><div id="detail-content"></div></dialog>
+  <dialog id="compare-dialog" class="wide-dialog" aria-labelledby="compare-title"><div class="dialog-top"><h2 id="compare-title">선택한 프로그램 비교</h2><button type="button" class="close-dialog" aria-label="비교 닫기">닫기 ×</button></div><div id="compare-content"></div></dialog>
+
+  <footer><span>소프트웨어공학 · 1분반 10팀</span><span>데이터 제공: 부산광역시 · 공공데이터포털</span></footer>
+</body>
+</html>
